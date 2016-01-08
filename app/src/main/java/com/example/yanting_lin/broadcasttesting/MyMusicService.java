@@ -26,20 +26,22 @@ public class MyMusicService extends Service implements MediaPlayer.OnPreparedLis
 
     @Override
     public int onStartCommand(Intent intent,int flags,int startId) {
-        Log.v(TAG_THIS_ACIVITY,"onStartCommand()");
-        if(intent.getAction()!=null) {
-            if (intent.getAction().equals(PLAY_ACTION_NAME)) {
-                try {
-                    String url = "https://sites.google.com/site/wuyuetianzixunpingtai/"
-                            + "home/ge-qu/OAOA.mp3?attredirects=0&d=1";
-                    mMediaPlayer = new MediaPlayer();
-                    mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    mMediaPlayer.setVolume((float)0.01,(float)0.01);
-                    mMediaPlayer.setDataSource(url);
-                    mMediaPlayer.setOnPreparedListener(this);
-                    mMediaPlayer.prepareAsync();
-                } catch (IOException e) {
-                    Log.e(TAG_THIS_ACIVITY, "Resource not found!!!!!!!!");
+        Log.v(TAG_THIS_ACIVITY, "onStartCommand()");
+        if (intent != null) {
+            if (intent.getAction() != null) {
+                if (intent.getAction().equals(PLAY_ACTION_NAME)) {
+                    try {
+                        String url = "https://sites.google.com/site/wuyuetianzixunpingtai/"
+                                + "home/ge-qu/OAOA.mp3?attredirects=0&d=1";
+                        mMediaPlayer = new MediaPlayer();
+                        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                        mMediaPlayer.setVolume((float) 0.01, (float) 0.01);
+                        mMediaPlayer.setDataSource(url);
+                        mMediaPlayer.setOnPreparedListener(this);
+                        mMediaPlayer.prepareAsync();
+                    } catch (IOException e) {
+                        Log.e(TAG_THIS_ACIVITY, "Resource not found!!!!!!!!");
+                    }
                 }
             }
         }
